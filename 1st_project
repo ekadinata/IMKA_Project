@@ -1,0 +1,21 @@
+int input = 2;
+int output =13;
+int reading;
+int prev = 0;
+int volt = 0;
+
+void setup(){
+  pinMode(input,INPUT);
+  pinMode(output,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  reading = digitalRead(input);
+  if(reading == HIGH && prev == LOW){
+    volt =  volt ==HIGH?LOW:HIGH;
+    digitalWrite(output,volt);
+  }
+  if(reading != prev)
+    prev = reading;
+}
